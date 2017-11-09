@@ -47,7 +47,9 @@ const outTime = (fn, timeout) => {
     ])
 }
 
+let total = 0;
 const download = (target, list) => {
+    total = list.length;
     if (!fs.existsSync(target)) {
         logger.info('创建新的目录!');
         fs.mkdirSync(target);
@@ -62,7 +64,10 @@ const saveImageFlie = (src, dest, callback) => {
     request.head(src, function(err, res, body) {
         if (src) {
             request(src).pipe(fs.createWriteStream(dest)).on('close', function() {
-                logger.info(`第${index++}张图片下载完成`);
+                index++
+                if (index == (total - 1)) {
+                    logger.info(total + `张图片下载完成`);
+                }
                 callback(null, dest);
             });
         }
@@ -70,4 +75,15 @@ const saveImageFlie = (src, dest, callback) => {
     });
 };
 
-export default { runTimes, download };
+
+const writeFile = (readmePath, fileContent) => {
+    fs.writeFile(readmePath, fileContent, function(err) {
+        if (!err) {
+            console.log("文件创建成功");
+        } else {
+            console.log("文件创建失败！");
+        }
+    });
+}
+
+export default { runTimes, download, writeFile };
