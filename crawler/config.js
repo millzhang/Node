@@ -1,7 +1,7 @@
 export default {
     website: 'http://image.baidu.com/',
     diskPath: 'G:/images/',
-    keywords: '丝袜 OL 美女',
+    keywords: '丝袜 美女',
     scroll: {
         start: 0,
         step: 1024,
@@ -9,7 +9,9 @@ export default {
         interval: 100
     },
     page: {
-        size: 50,
+        num: 30,
+        size: 30,
+        times: 500,
         timeout: 10
     }
 }

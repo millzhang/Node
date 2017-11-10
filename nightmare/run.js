@@ -25,8 +25,8 @@ const login = async() => {
     await nm.goto('http://demo.timepack.cn/web');
     await nm.click('.tab :nth-child(7)');
     await nm.wait('#inputForm');
-    await nm.type('#account', 'dik@beumu.com');
-    await nm.type('#password', 'timepack206');
+    await nm.type('#account', 'xxx');
+    await nm.type('#password', 'xxx');
     const code = await nm.evaluate(() => {
         return document.querySelector('#v-code').innerText;
     })

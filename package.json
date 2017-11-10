@@ -20,11 +20,14 @@
   },
   "homepage": "https://github.com/MillZhang/Node#readme",
   "dependencies": {
+    "axios": "^0.17.0",
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
     "bagpipe": "^0.3.5",
+    "cheerio": "^1.0.0-rc.2",
     "log4js": "^2.3.11",
     "mkdirp": "^0.5.1",
+    "mysql": "^2.15.0",
     "nightmare": "^2.10.0",
     "request": "^2.83.0",
     "uuid": "^3.1.0"
