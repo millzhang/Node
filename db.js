@@ -25,6 +25,7 @@ exports.query = (sql) => {
     })
 }
 
+//插入操作
 exports.insert = (sql, data) => {
     return new Promise((resolve, reject) => {
         logger.debug('执行插入操作')

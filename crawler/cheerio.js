@@ -20,6 +20,12 @@ let imageList = new Set(),
     hostList = new Set();
 const run = async() => {
     //发送一个请求
+    startCrawler()
+}
+
+
+
+const startCrawler = async() => {
     for (let i = 0; i < config.page.times; i++) {
         logger.debug(`开始第${i+1}次请求`)
         if (await getImageByPage(pageNum)) {
@@ -54,10 +60,12 @@ const getImageByPage = async(page) => {
         if (undefined == lazyData) true;
         let result = [];
         lazyData.forEach(item => {
-            imageList.add(item.thumbURL);
-            hostList.add(item.fromURLHost);
-            result.push(item.thumbURL);
-            db.insert(`insert into baidu_image(host,url) values("${item.fromURLHost}","${item.thumbURL}")`);
+            if (undefined != item.thumbURL) {
+                imageList.add(item.thumbURL);
+                hostList.add(item.fromURLHost);
+                result.push(item.thumbURL);
+                db.insert(`insert into baidu_image(host,url) values("${item.fromURLHost}","${item.thumbURL}")`);
+            }
         });
 
         // logger.info(`数据解析完成,分页下载图片,共${result.length}张>>>>>>>>`);
@@ -71,3 +79,4 @@ const getImageByPage = async(page) => {
 
 
 run();
+// export default { run }
